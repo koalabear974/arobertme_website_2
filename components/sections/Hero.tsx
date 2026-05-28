@@ -37,8 +37,8 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-40">
-        <span className="font-mono text-[0.6rem] text-[var(--text-muted)] tracking-[0.2em] uppercase">Scroll</span>
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-40 ">
+        <span className="font-mono text-[0.6rem] text-[var(--text-muted)] tracking-[0.2em] uppercase ">Scroll</span>
         <div className="w-px h-8 bg-[var(--text-muted)] animate-pulse" />
       </div>
     </section>

@@ -7,6 +7,7 @@ import { Skills } from '@/components/sections/Skills'
 import { SideProjects } from '@/components/sections/SideProjects'
 import { Contact } from '@/components/sections/Contact'
 import { MobileCircle } from '@/components/canvas/MobileCircle'
+import { RandomizeButton } from '@/components/ui/RandomizeButton'
 
 export default function Home() {
   return (
@@ -30,6 +31,7 @@ export default function Home() {
       </div>
 
       <MobileCircle />
+      <RandomizeButton />
     </>
   )
 }

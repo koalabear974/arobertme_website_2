@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useRef } from 'react'
 import type p5Type from 'p5'
+import { getActiveText, getActiveConfig, type CanvasRandomConfig } from '@/lib/canvasText'
 
 interface Config {
   text: string
@@ -49,8 +50,6 @@ const easingFn = (e: number) =>
 const rateFn = (e: number) =>
   e === 0 ? 0 : Math.log(1 + e * 9) / Math.log(10)
 
-// easeOutQuad spacing — characters gather toward top of each column
-const spacingFn = (e: number) => 1 - (1 - e) * (1 - e)
 
 interface Glyph {
   source: HTMLCanvasElement | ImageBitmap
@@ -129,6 +128,8 @@ export function GenerativeCanvas() {
         let glyphCache: Record<string, Glyph | null> = {}
         let cachedFontSize = -1
         let cachedDPR = -1
+        let cachedText = ''
+        let cachedConfig: CanvasRandomConfig = getActiveConfig()
         let glyphPad = 0
 
         p.setup = () => {
@@ -156,12 +157,22 @@ export function GenerativeCanvas() {
           const fontSize = colWidth * S.charSize * 0.8
           if (fontSize <= 0) return
 
-          if (Math.abs(fontSize - cachedFontSize) >= 0.5 || dpr !== cachedDPR) {
-            const built = buildGlyphCache(S.text, fontSize, S.strokeColor, dpr)
+          const activeText = getActiveText()
+          const activeCfg = getActiveConfig()
+          if (activeCfg !== cachedConfig) {
+            cachedConfig = activeCfg
+            S = { ...S, ...activeCfg }
+            totalCols = S.mirror ? S.columns * 2 - 1 : S.columns
+            phaseOffsets = computePhaseOffsets(S)
+            cachedFontSize = -1
+          }
+          if (Math.abs(fontSize - cachedFontSize) >= 0.5 || dpr !== cachedDPR || activeText !== cachedText) {
+            const built = buildGlyphCache(activeText, fontSize, S.strokeColor, dpr)
             glyphCache = built.cache
             glyphPad = built.pad
             cachedFontSize = fontSize
             cachedDPR = dpr
+            cachedText = activeText
           }
 
           const availH = h - fontSize
@@ -178,7 +189,7 @@ export function GenerativeCanvas() {
 
             for (let row = 0; row <= wholeRows; row++) {
               const t = animRows > 1 ? row / (animRows - 1) : 0
-              let y = spacingFn(Math.min(t, 1)) * availH
+              let y = activeCfg.spacingFn(Math.min(t, 1)) * availH
 
               // Blend in the fractional last row smoothly
               if (row === wholeRows && frac < 1) {
@@ -188,7 +199,7 @@ export function GenerativeCanvas() {
 
               if (y < -margin || y > h + margin) continue
 
-              const ch = S.text[row % S.text.length]
+              const ch = activeText[row % activeText.length]
               const glyph = glyphCache[ch]
               if (!glyph) continue
 
