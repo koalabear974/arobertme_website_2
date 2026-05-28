@@ -15,7 +15,7 @@ export function Card({ children, className, href }: CardProps) {
   )
 
   if (href) {
-    return <a href={href} className={cn(base, 'block')}>{children}</a>
+    return <a href={href} target="_blank" rel="noopener noreferrer" className={cn(base, 'block')}>{children}</a>
   }
 
   return <div className={base}>{children}</div>
