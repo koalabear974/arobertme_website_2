@@ -1,6 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
-import { useScrollDirection } from '@/hooks/useScrollDirection'
+import { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 
 const navLinks = [
@@ -11,30 +10,38 @@ const navLinks = [
 ]
 
 export function Nav() {
-  const direction = useScrollDirection()
   const [scrolled, setScrolled] = useState(false)
+  const [hidden, setHidden] = useState(false)
+  const lastY = useRef(0)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 80)
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
+    const onScroll = () => {
+      const y = window.scrollY
+      if (Math.abs(y - lastY.current) > 5) {
+        setHidden(y > lastY.current && y > 80)
+        lastY.current = y
+      }
+      setScrolled(y > 80)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   return (
     <header
       className={cn(
-        'fixed z-50 flex justify-center px-4',
-        'transition-all duration-300 ease-[var(--ease)]',
-        scrolled ? 'top-4 left-0 right-0' : 'top-0 left-0 right-0 py-4',
-        direction === 'down' ? '-translate-y-[calc(100%+1.5rem)]' : 'translate-y-0'
+        'fixed top-0 left-0 right-0 z-50',
+        'transition-transform duration-300 ease-[var(--ease)]',
+        scrolled && 'flex justify-center pt-4 px-4',
+        hidden ? '-translate-y-full' : 'translate-y-0'
       )}
     >
       <div
         className={cn(
-          'flex items-center gap-6 transition-all duration-300 ease-[var(--ease)]',
+          'flex items-center',
           scrolled
-            ? 'px-5 py-2.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]'
-            : 'px-6 py-0 w-full max-w-5xl justify-between'
+            ? 'gap-6 px-5 py-2.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]'
+            : 'w-full justify-between px-6 py-4'
         )}
       >
         <a
