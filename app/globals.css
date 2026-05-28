@@ -45,3 +45,12 @@ body {
   background: var(--accent-tint);
   color: var(--accent);
 }
+
+@media (max-width: 1023px) {
+  main section {
+    position: relative;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.88);
+    box-shadow: 0 0 40px 32px rgba(0, 0, 0, 0.88);
+  }
+}

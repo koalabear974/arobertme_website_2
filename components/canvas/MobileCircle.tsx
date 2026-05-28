@@ -7,8 +7,8 @@ export function MobileCircle() {
   const [size, setSize] = useState(0)
 
   useEffect(() => {
-    setSize(window.innerWidth)
-    const onResize = () => setSize(window.innerWidth)
+    setSize(Math.min(window.innerWidth, 420))
+    const onResize = () => setSize(Math.min(window.innerWidth, 420))
     const onScroll = () => setVisible(window.scrollY > window.innerHeight * 0.8)
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', onResize, { passive: true })
@@ -23,7 +23,7 @@ export function MobileCircle() {
   return (
     <div
       className={`
-        fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none
+        fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none
         lg:hidden
         transition-opacity duration-700
         ${visible ? 'opacity-100' : 'opacity-0'}
