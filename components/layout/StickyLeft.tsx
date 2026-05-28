@@ -19,14 +19,14 @@ export function StickyLeft() {
 
   return (
     <div className="sticky top-0 h-screen flex flex-col justify-between py-24 px-8 lg:px-12 relative">
-      {/* Background circle — large canvas clipped to sidebar bounds */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Background circle — overflows sidebar bounds intentionally */}
+      <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <CircleCanvas size={1000} variant="desktop" />
         </div>
       </div>
 
-      <div className="relative z-10" style={{ textShadow: '0 0 12px rgba(0,0,0,1), 0 2px 4px rgba(0,0,0,1)' }}>
+      <div className="relative z-10" style={{ boxShadow: '0 0 40px 32px rgba(0,0,0,0.95)' }}>
         <h1 className="text-2xl font-semibold text-[var(--text-primary)] tracking-tight mb-1">
           Adrien Robert
         </h1>
@@ -36,7 +36,7 @@ export function StickyLeft() {
         </p>
       </div>
 
-      <nav className="relative z-10 flex flex-col gap-1" style={{ textShadow: '0 0 12px rgba(0,0,0,1), 0 2px 4px rgba(0,0,0,1)' }}>
+      <nav className="relative z-10 flex flex-col gap-1" style={{ boxShadow: '0 0 40px 32px rgba(0,0,0,0.95)' }}>
         <a
           href="#hero"
           className="flex items-center gap-3 text-sm py-1 text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors duration-200 mb-2"
@@ -66,7 +66,7 @@ export function StickyLeft() {
         ))}
       </nav>
 
-      <div className="relative z-10 flex flex-col gap-4" style={{ textShadow: '0 0 12px rgba(0,0,0,1), 0 2px 4px rgba(0,0,0,1)' }}>
+      <div className="relative z-10 flex flex-col gap-4" style={{ boxShadow: '0 0 40px 32px rgba(0,0,0,0.95)' }}>
         <div className="flex flex-wrap gap-1.5">
           {quickSkills.map((skill, i) => (
             <span key={skill} className="font-mono text-[0.65rem] text-[var(--text-muted)] tracking-wider">
