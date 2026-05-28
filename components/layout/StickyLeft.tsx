@@ -18,7 +18,7 @@ export function StickyLeft() {
   const activeId = useActiveSection(SECTION_IDS)
 
   return (
-    <div className="sticky top-0 h-screen flex flex-col justify-between py-24 px-8 lg:px-12">
+    <div className="sticky top-0 h-screen flex flex-col justify-between py-24 px-8 lg:px-12 relative overflow-hidden">
       <div>
         <h1 className="text-2xl font-semibold text-[var(--text-primary)] tracking-tight mb-1">
           Adrien Robert
@@ -29,7 +29,7 @@ export function StickyLeft() {
         </p>
       </div>
 
-      <CircleCanvas size={160} variant="desktop" className="-ml-2" />
+      <CircleCanvas size={280} variant="desktop" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20 pointer-events-none" />
 
       <nav className="flex flex-col gap-1">
         <a

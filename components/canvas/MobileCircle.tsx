@@ -14,7 +14,7 @@ export function MobileCircle() {
   return (
     <div
       className={`
-        fixed bottom-6 left-1/2 -translate-x-1/2 z-40
+        fixed bottom-6 left-1/2 -translate-x-1/2 z-10 pointer-events-none
         lg:hidden
         transition-opacity duration-700
         ${visible ? 'opacity-100' : 'opacity-0 pointer-events-none'}
