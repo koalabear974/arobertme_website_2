@@ -1,7 +1,6 @@
 'use client'
 import { useEffect, useRef } from 'react'
 import type p5Type from 'p5'
-import { getActiveText } from '@/lib/canvasText'
 
 interface Config {
   circles: number
@@ -107,7 +106,7 @@ export function CircleCanvas({ size, variant = 'desktop', className }: Props) {
       p.draw = () => {
         p.clear()
 
-        const text = getActiveText()
+        const text = SHARED.text
         const textLen = text.length
         if (textLen < 1) return
 
