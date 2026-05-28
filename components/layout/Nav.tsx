@@ -17,11 +17,12 @@ export function Nav() {
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY
+      setScrolled(y > 80)
       if (Math.abs(y - lastY.current) > 5) {
-        setHidden(y > lastY.current && y > 80)
+        // Only hide when scrolling down past 300px — gives the pill room to appear first
+        setHidden(y > lastY.current && y > 300)
         lastY.current = y
       }
-      setScrolled(y > 80)
     }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
