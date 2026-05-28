@@ -19,7 +19,6 @@ export const skillTiers: SkillTier[] = [
   {
     name: 'AI & MCP',
     level: 55,
-    note: 'practitioner, not specialist',
     items: ['MCP integrations', 'Agentic workflows', 'Local LLMs', 'p5.js / Generative systems', 'Prompt engineering'],
   },
   {

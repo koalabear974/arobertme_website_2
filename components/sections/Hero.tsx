@@ -9,7 +9,10 @@ export function Hero() {
     >
       <GenerativeCanvas />
 
-      <div className="relative z-10 text-center px-6">
+      <div
+        className="relative z-10 text-center px-10 py-12 rounded-2xl"
+        style={{ background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.45) 55%, transparent 100%)' }}
+      >
         <p className="font-mono text-xs text-[var(--accent)] tracking-[0.2em] uppercase mb-4">
           Senior Front-End Engineer · Berlin
         </p>
