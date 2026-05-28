@@ -14,6 +14,12 @@ export function Work() {
 
   return (
     <section id="work" className="py-24">
+      <a
+        href="#hero"
+        className="inline-flex items-center gap-1.5 font-mono text-xs text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors mb-10"
+      >
+        ↑ Adrien Robert
+      </a>
       <SectionHeading number="01">Where I've Worked</SectionHeading>
 
       <div className="flex flex-col gap-4">
