@@ -4,6 +4,7 @@ import { workRoles } from '@/data/work'
 import { Card } from '@/components/ui/Card'
 import { Tag } from '@/components/ui/Tag'
 import { SectionHeading } from '@/components/ui/SectionHeading'
+import { FadeUp } from '@/components/ui/FadeUp'
 
 export function Work() {
   const [showAll, setShowAll] = useState(false)
@@ -16,35 +17,37 @@ export function Work() {
       <SectionHeading number="01">Where I've Worked</SectionHeading>
 
       <div className="flex flex-col gap-4">
-        {visible.map((role) => (
-          <Card key={role.id} href={role.url}>
-            <div className="flex items-start justify-between gap-4 mb-3">
-              <div>
-                <h3 className="text-[var(--text-primary)] font-semibold text-base">
-                  {role.title}
-                  <span className="text-[var(--accent)]"> · {role.company}</span>
-                </h3>
-                <p className="font-mono text-xs text-[var(--text-muted)] mt-0.5">
-                  {role.period} · {role.duration} · {role.location}
-                </p>
+        {visible.map((role, i) => (
+          <FadeUp key={role.id} delay={i * 0.08}>
+            <Card href={role.url}>
+              <div className="flex items-start justify-between gap-4 mb-3">
+                <div>
+                  <h3 className="text-[var(--text-primary)] font-semibold text-base">
+                    {role.title}
+                    <span className="text-[var(--accent)]"> · {role.company}</span>
+                  </h3>
+                  <p className="font-mono text-xs text-[var(--text-muted)] mt-0.5">
+                    {role.period} · {role.duration} · {role.location}
+                  </p>
+                </div>
+                {role.isCurrent && (
+                  <span className="shrink-0 font-mono text-[0.6rem] text-[var(--accent)] border border-[var(--accent)] rounded-full px-2 py-0.5 tracking-wider">
+                    Current
+                  </span>
+                )}
               </div>
-              {role.isCurrent && (
-                <span className="shrink-0 font-mono text-[0.6rem] text-[var(--accent)] border border-[var(--accent)] rounded-full px-2 py-0.5 tracking-wider">
-                  Current
-                </span>
-              )}
-            </div>
 
-            <p className="text-sm text-[var(--text-body)] leading-relaxed mb-4">
-              {role.impact}
-            </p>
+              <p className="text-sm text-[var(--text-body)] leading-relaxed mb-4">
+                {role.impact}
+              </p>
 
-            <div className="flex flex-wrap gap-2">
-              {role.tags.map((tag) => (
-                <Tag key={tag}>{tag}</Tag>
-              ))}
-            </div>
-          </Card>
+              <div className="flex flex-wrap gap-2">
+                {role.tags.map((tag) => (
+                  <Tag key={tag}>{tag}</Tag>
+                ))}
+              </div>
+            </Card>
+          </FadeUp>
         ))}
       </div>
 
