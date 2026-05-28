@@ -11,11 +11,12 @@ interface Config {
   maxWords: number
 }
 
+// Original params — require large canvas to be readable (~1000px for desktop)
 const DESKTOP_CONFIG: Config = {
-  circles: 6,
-  innerRadius: 0.2,
-  charSize: 2.0,
-  circleSpace: 3,
+  circles: 20,
+  innerRadius: 0.19,
+  charSize: 1.3,
+  circleSpace: 7,
   scale: 0.88,
   maxWords: 20,
 }
@@ -29,13 +30,14 @@ const MOBILE_CONFIG: Config = {
   maxWords: 16,
 }
 
+// Original mobile params — scale > 1 intentionally crops outer rings
 const SCREEN_CONFIG: Config = {
-  circles: 8,
-  innerRadius: 0.2,
-  charSize: 2.0,
-  circleSpace: 4,
-  scale: 0.9,
-  maxWords: 20,
+  circles: 10,
+  innerRadius: 0.22,
+  charSize: 3,
+  circleSpace: 15,
+  scale: 1.29,
+  maxWords: 16,
 }
 
 const SHARED = {

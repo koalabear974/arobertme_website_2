@@ -19,9 +19,11 @@ export function StickyLeft() {
 
   return (
     <div className="sticky top-0 h-screen flex flex-col justify-between py-24 px-8 lg:px-12 relative">
-      {/* Background circle */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
-        <CircleCanvas size={280} variant="desktop" />
+      {/* Background circle — large canvas clipped to sidebar bounds */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <CircleCanvas size={1000} variant="desktop" />
+        </div>
       </div>
 
       <div className="relative z-10">
