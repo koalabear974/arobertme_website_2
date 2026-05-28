@@ -55,7 +55,7 @@ export function Work() {
         <div className="mt-6 flex items-center gap-4">
           <button
             onClick={() => setShowAll(true)}
-            className="font-mono text-xs text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors"
+            className="font-mono text-xs text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors on-canvas--small"
           >
             + {rest.length} more roles
           </button>
@@ -63,7 +63,7 @@ export function Work() {
             href="/Adrien_ROBERT_CV_en_2026.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-xs text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors"
+            className="font-mono text-xs text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors on-canvas--small"
           >
             Full CV (PDF) →
           </a>

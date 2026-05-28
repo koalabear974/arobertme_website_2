@@ -5,11 +5,13 @@ import { SectionHeading } from '@/components/ui/SectionHeading'
 export function Skills() {
   return (
     <section id="skills" className="py-24">
-      <SectionHeading number="03">Skills</SectionHeading>
+      <SectionHeading number="03">
+        <span className="on-canvas">Skills</span>
+      </SectionHeading>
 
       <div className="flex flex-col gap-10">
         {skillTiers.map((tier) => (
-          <div key={tier.name}>
+          <div key={tier.name} className="on-canvas">
             <div className="flex items-center gap-4 mb-4">
               <span className="text-sm font-semibold text-[var(--text-primary)]">{tier.name}</span>
 

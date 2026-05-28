@@ -5,7 +5,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative w-full h-screen flex items-center justify-center overflow-hidden"
+      className="relative z-10 w-full h-screen flex items-center justify-center overflow-hidden bg-[var(--bg)]"
     >
       <GenerativeCanvas />
 

@@ -11,7 +11,7 @@ interface Config {
   maxWords: number
 }
 
-// Original params — require large canvas to be readable (~1000px for desktop)
+// Left sidebar on desktop — large canvas (~1000px), many rings
 const DESKTOP_CONFIG: Config = {
   circles: 12,
   innerRadius: 0.19,
@@ -21,23 +21,24 @@ const DESKTOP_CONFIG: Config = {
   maxWords: 20,
 }
 
-const MOBILE_CONFIG: Config = {
-  circles: 4,
-  innerRadius: 0.2,
-  charSize: 2.0,
-  circleSpace: 3,
-  scale: 0.9,
+// Floating background on tablet (768–1023px)
+const TABLET_CONFIG: Config = {
+  circles: 8,
+  innerRadius: 0.22,
+  charSize: 2,
+  circleSpace: 35,
+  scale: 0.92,
   maxWords: 16,
 }
 
-// Original mobile params — scale > 1 intentionally crops outer rings
-const SCREEN_CONFIG: Config = {
+// Floating background on phone (<768px)
+const MOBILE_CONFIG: Config = {
   circles: 6,
-  innerRadius: 0.22,
-  charSize: 3,
-  circleSpace: 15,
-  scale: 1.29,
-  maxWords: 16,
+  innerRadius: 0.3,
+  charSize: 2,
+  circleSpace: 16,
+  scale: 0.88,
+  maxWords: 12,
 }
 
 const SHARED = {
@@ -64,7 +65,7 @@ const easingFn = (e: number) =>
 
 interface Props {
   size: number
-  variant?: 'desktop' | 'mobile' | 'screen'
+  variant?: 'desktop' | 'tablet' | 'mobile'
   className?: string
 }
 
@@ -80,7 +81,7 @@ export function CircleCanvas({ size, variant = 'desktop', className }: Props) {
       .getPropertyValue('--font-geist-mono').trim()
     const fontFamily = fontVar || 'monospace'
 
-    const cfg = variant === 'mobile' ? MOBILE_CONFIG : variant === 'screen' ? SCREEN_CONFIG : DESKTOP_CONFIG
+    const cfg = variant === 'mobile' ? MOBILE_CONFIG : variant === 'tablet' ? TABLET_CONFIG : DESKTOP_CONFIG
     const sequence = SHARED.sequenceCustom.split('-').map(s => Math.max(1, parseInt(s) || 1))
     const seqLen = sequence.length
 
