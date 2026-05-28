@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 :root {
-  /* Colors */
   --bg: #000000;
   --surface: #111111;
   --divider: #222222;
@@ -12,15 +11,12 @@
   --accent-tint: rgba(0, 229, 200, 0.1);
   --canvas-letters: #e6e6e6;
 
-  /* Typography */
   --font-sans: var(--font-geist-sans), 'Geist', system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), 'JetBrains Mono', monospace;
+  --font-mono: var(--font-geist-mono), monospace;
 
-  /* Easing */
   --ease: cubic-bezier(0.645, 0.045, 0.355, 1);
-  --transition: all 0.25s var(--ease);
+  --transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
 
-  /* Layout */
   --nav-height: 70px;
   --left-col-width: 40%;
 }
@@ -41,12 +37,10 @@ body {
   font-family: var(--font-sans);
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
 
-/* Text selection */
 ::selection {
   background: var(--accent-tint);
   color: var(--accent);
