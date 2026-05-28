@@ -18,8 +18,13 @@ export function StickyLeft() {
   const activeId = useActiveSection(SECTION_IDS)
 
   return (
-    <div className="sticky top-0 h-screen flex flex-col justify-between py-24 px-8 lg:px-12 relative overflow-hidden">
-      <div>
+    <div className="sticky top-0 h-screen flex flex-col justify-between py-24 px-8 lg:px-12 relative">
+      {/* Background circle */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
+        <CircleCanvas size={280} variant="desktop" />
+      </div>
+
+      <div className="relative z-10">
         <h1 className="text-2xl font-semibold text-[var(--text-primary)] tracking-tight mb-1">
           Adrien Robert
         </h1>
@@ -29,9 +34,7 @@ export function StickyLeft() {
         </p>
       </div>
 
-      <CircleCanvas size={280} variant="desktop" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20 pointer-events-none" />
-
-      <nav className="flex flex-col gap-1">
+      <nav className="relative z-10 flex flex-col gap-1">
         <a
           href="#hero"
           className="flex items-center gap-3 text-sm py-1 text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors duration-200 mb-2"
@@ -61,7 +64,7 @@ export function StickyLeft() {
         ))}
       </nav>
 
-      <div className="flex flex-col gap-4">
+      <div className="relative z-10 flex flex-col gap-4">
         <div className="flex flex-wrap gap-1.5">
           {quickSkills.map((skill, i) => (
             <span key={skill} className="font-mono text-[0.65rem] text-[var(--text-muted)] tracking-wider">
