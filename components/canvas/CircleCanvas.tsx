@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useRef } from 'react'
-import p5 from 'p5'
+import type p5Type from 'p5'
 
 interface Config {
   circles: number
@@ -13,11 +13,11 @@ interface Config {
 
 // Original params — require large canvas to be readable (~1000px for desktop)
 const DESKTOP_CONFIG: Config = {
-  circles: 20,
+  circles: 12,
   innerRadius: 0.19,
   charSize: 1.3,
   circleSpace: 7,
-  scale: 0.88,
+  scale: 0.8,
   maxWords: 20,
 }
 
@@ -70,10 +70,11 @@ interface Props {
 
 export function CircleCanvas({ size, variant = 'desktop', className }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
-  const sketchRef = useRef<p5 | null>(null)
+  const sketchRef = useRef<p5Type | null>(null)
 
   useEffect(() => {
     if (!containerRef.current) return
+    let destroyed = false
 
     const fontVar = getComputedStyle(document.documentElement)
       .getPropertyValue('--font-geist-mono').trim()
@@ -90,7 +91,10 @@ export function CircleCanvas({ size, variant = 'desktop', className }: Props) {
       return Math.min(Math.max(1, sequence[i]), cfg.maxWords)
     }
 
-    const sketch = new p5((p: p5) => {
+    import('p5').then(({ default: P5 }) => {
+      if (destroyed || !containerRef.current) return
+
+    const sketch = new P5((p: p5Type) => {
       let time = 0
       let rotAngle = 0
 
@@ -177,8 +181,14 @@ export function CircleCanvas({ size, variant = 'desktop', className }: Props) {
       }
     }, containerRef.current)
 
-    sketchRef.current = sketch
-    return () => { sketchRef.current?.remove(); sketchRef.current = null }
+      sketchRef.current = sketch
+    })
+
+    return () => {
+      destroyed = true
+      sketchRef.current?.remove()
+      sketchRef.current = null
+    }
   }, [size, variant])
 
   return <div ref={containerRef} className={className} style={{ width: size, height: size }} />
