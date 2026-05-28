@@ -18,7 +18,7 @@ interface Config {
 }
 
 const DESKTOP: Config = {
-  text: ' ADRIEN ',
+  text: ' γΔY°...^-{γ4E ',
   columns: 26,
   minRows: 1,
   maxRows: 35,

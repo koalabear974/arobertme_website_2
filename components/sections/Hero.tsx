@@ -34,7 +34,6 @@ export function Hero() {
         <div className="flex gap-3 justify-center flex-wrap">
           <Button href="#work" variant="primary">View my work</Button>
           <Button href="/Adrien_ROBERT_CV_en_2026.pdf" variant="ghost" target="_blank" rel="noopener noreferrer">Download CV</Button>
-          <Button href="#contact" variant="ghost">Get in touch</Button>
         </div>
       </div>
 

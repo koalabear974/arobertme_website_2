@@ -6,6 +6,7 @@ import { About } from '@/components/sections/About'
 import { Skills } from '@/components/sections/Skills'
 import { SideProjects } from '@/components/sections/SideProjects'
 import { Contact } from '@/components/sections/Contact'
+import { MobileCircle } from '@/components/canvas/MobileCircle'
 
 export default function Home() {
   return (
@@ -27,6 +28,8 @@ export default function Home() {
           <Contact />
         </main>
       </div>
+
+      <MobileCircle />
     </>
   )
 }

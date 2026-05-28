@@ -1,6 +1,7 @@
 'use client'
 import { useActiveSection } from '@/hooks/useActiveSection'
 import { cn } from '@/lib/utils'
+import { CircleCanvas } from '@/components/canvas/CircleCanvas'
 
 const SECTION_IDS = ['work', 'about', 'skills', 'projects', 'contact']
 
@@ -27,6 +28,8 @@ export function StickyLeft() {
           12+ years building product interfaces across greentech, logistics, and edtech.
         </p>
       </div>
+
+      <CircleCanvas size={160} variant="desktop" className="-ml-2" />
 
       <nav className="flex flex-col gap-1">
         <a
