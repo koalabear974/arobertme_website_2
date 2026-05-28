@@ -32,7 +32,7 @@ const MOBILE_CONFIG: Config = {
 
 // Original mobile params — scale > 1 intentionally crops outer rings
 const SCREEN_CONFIG: Config = {
-  circles: 10,
+  circles: 6,
   innerRadius: 0.22,
   charSize: 3,
   circleSpace: 15,

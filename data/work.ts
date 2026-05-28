@@ -18,7 +18,7 @@ export const workRoles: WorkRole[] = [
     id: 'senvo',
     company: 'Senvo',
     title: 'Senior Front-End Developer',
-    period: 'Oct 2024 – Aug 2026',
+    period: 'Sep 2024 – Aug 2026',
     duration: '1 yr 10 mo',
     location: 'Berlin',
     stack: 'React, Python',
