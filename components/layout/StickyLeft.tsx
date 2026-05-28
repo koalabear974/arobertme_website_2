@@ -11,7 +11,7 @@ const navItems = [
   { id: 'projects', label: 'Projects' },
 ]
 
-const quickSkills = ['React', 'Node', 'Python', 'MCP']
+const quickSkills = ['React', 'Node.js', 'Python', 'MCP']
 
 export function StickyLeft() {
   const activeId = useActiveSection(SECTION_IDS)
@@ -24,7 +24,7 @@ export function StickyLeft() {
         </h1>
         <p className="text-sm text-[var(--text-body)] mb-3">Senior Front-End Engineer</p>
         <p className="text-xs text-[var(--text-muted)] leading-relaxed max-w-[220px]">
-          Building for greentech, AI tooling, and the open web.
+          12+ years building product interfaces across greentech, logistics, and edtech.
         </p>
       </div>
 
@@ -60,15 +60,21 @@ export function StickyLeft() {
 
       <div className="flex flex-col gap-4">
         <div className="flex flex-wrap gap-1.5">
-          {quickSkills.map((skill) => (
-            <span
-              key={skill}
-              className="font-mono text-[0.65rem] text-[var(--text-muted)] tracking-wider"
-            >
-              {skill}
+          {quickSkills.map((skill, i) => (
+            <span key={skill} className="font-mono text-[0.65rem] text-[var(--text-muted)] tracking-wider">
+              {skill}{i < quickSkills.length - 1 && <span className="mx-1 opacity-30">·</span>}
             </span>
           ))}
         </div>
+
+        <a
+          href="/Adrien_ROBERT_CV_en_2026.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-mono text-xs text-[var(--accent)] border border-[var(--accent)] rounded-full px-3 py-1.5 hover:bg-[var(--accent)] hover:text-black transition-colors w-fit"
+        >
+          Download CV →
+        </a>
 
         <div className="flex gap-4">
           <a
