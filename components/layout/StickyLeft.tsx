@@ -29,6 +29,13 @@ export function StickyLeft() {
       </div>
 
       <nav className="flex flex-col gap-1">
+        <a
+          href="#hero"
+          className="flex items-center gap-3 text-sm py-1 text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors duration-200 mb-2"
+        >
+          <span className="h-px w-4 bg-current" />
+          ↑ Top
+        </a>
         {navItems.map((item) => (
           <a
             key={item.id}
