@@ -20,7 +20,7 @@ export default function Home() {
           <StickyLeft />
         </div>
 
-        <main className="lg:pl-12 xl:pl-16 relative z-10" style={{ boxShadow: '-60px 0 80px 60px rgba(0,0,0,1)', background: '#000000' }}>
+        <main className="lg:pl-12 xl:pl-16 relative z-10" style={{ boxShadow: '20px 0 80px 60px rgba(0,0,0,1)', background: '#000000', clipPath: 'inset(0 -9999px -9999px -9999px)' }}>
           <Work />
           <About />
           <Skills />
