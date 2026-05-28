@@ -15,7 +15,12 @@ export function About() {
           <p>
             I'm drawn to teams working on problems that matter: sustainable food systems,
             climate tech, and AI tooling that makes developers more capable. Alongside my
-            product work I practice generative art — I designed and built the animation
+            product work I practice{' '}
+            <a href="https://www.instagram.com/fromcodewithlove/" target="_blank" rel="noopener noreferrer"
+              className="text-[var(--accent)] hover:underline">
+              generative art
+            </a>
+            {' '}— I designed and built the animation
             system running on{' '}
             <a href="https://senvo.ai" target="_blank" rel="noopener noreferrer"
               className="text-[var(--accent)] hover:underline">
