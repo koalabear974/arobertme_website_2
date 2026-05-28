@@ -26,7 +26,7 @@ export function StickyLeft() {
         </div>
       </div>
 
-      <div className="relative z-10" style={{ boxShadow: '0 0 40px 32px rgba(0,0,0,0.95)', background: 'rgba(0,0,0,0.95)' }}>
+      <div className="relative z-10 w-fit" style={{ boxShadow: '0 0 40px 32px rgba(0,0,0,0.95)', background: 'rgba(0,0,0,0.95)' }}>
         <h1 className="text-2xl font-semibold text-[var(--text-primary)] tracking-tight mb-1">
           Adrien Robert
         </h1>
@@ -36,7 +36,7 @@ export function StickyLeft() {
         </p>
       </div>
 
-      <nav className="relative z-10 flex flex-col gap-1" style={{ boxShadow: '0 0 40px 32px rgba(0,0,0,0.95)', background: 'rgba(0,0,0,0.95)' }}>
+      <nav className="relative z-10 flex flex-col gap-1 w-fit" style={{ boxShadow: '0 0 40px 32px rgba(0,0,0,0.95)', background: 'rgba(0,0,0,0.95)' }}>
         <a
           href="#hero"
           className="flex items-center gap-3 text-sm py-1 text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors duration-200 mb-2"
@@ -66,7 +66,7 @@ export function StickyLeft() {
         ))}
       </nav>
 
-      <div className="relative z-10 flex flex-col gap-4" style={{ boxShadow: '0 0 40px 32px rgba(0,0,0,0.95)', background: 'rgba(0,0,0,0.95)' }}>
+      <div className="relative z-10 flex flex-col gap-4 w-fit" style={{ boxShadow: '0 0 40px 32px rgba(0,0,0,0.95)', background: 'rgba(0,0,0,0.95)' }}>
         <div className="flex flex-wrap gap-1.5">
           {quickSkills.map((skill, i) => (
             <span key={skill} className="font-mono text-[0.65rem] text-[var(--text-muted)] tracking-wider">
