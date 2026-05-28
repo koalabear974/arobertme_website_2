@@ -60,7 +60,7 @@ export function Work() {
             + {rest.length} more roles
           </button>
           <a
-            href="/Adrien_ROBERT_CV_en_no_photo_2024.pdf"
+            href="/Adrien_ROBERT_CV_en_2026.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="font-mono text-xs text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors"
