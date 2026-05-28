@@ -12,21 +12,30 @@ interface Config {
 }
 
 const DESKTOP_CONFIG: Config = {
-  circles: 14,
-  innerRadius: 0.19,
-  charSize: 1.3,
-  circleSpace: 5,
+  circles: 6,
+  innerRadius: 0.2,
+  charSize: 2.0,
+  circleSpace: 3,
   scale: 0.88,
   maxWords: 20,
 }
 
 const MOBILE_CONFIG: Config = {
-  circles: 10,
-  innerRadius: 0.22,
-  charSize: 1.8,
-  circleSpace: 8,
+  circles: 4,
+  innerRadius: 0.2,
+  charSize: 2.0,
+  circleSpace: 3,
   scale: 0.9,
   maxWords: 16,
+}
+
+const SCREEN_CONFIG: Config = {
+  circles: 8,
+  innerRadius: 0.2,
+  charSize: 2.0,
+  circleSpace: 4,
+  scale: 0.9,
+  maxWords: 20,
 }
 
 const SHARED = {
@@ -53,7 +62,7 @@ const easingFn = (e: number) =>
 
 interface Props {
   size: number
-  variant?: 'desktop' | 'mobile'
+  variant?: 'desktop' | 'mobile' | 'screen'
   className?: string
 }
 
@@ -68,7 +77,7 @@ export function CircleCanvas({ size, variant = 'desktop', className }: Props) {
       .getPropertyValue('--font-geist-mono').trim()
     const fontFamily = fontVar || 'monospace'
 
-    const cfg = variant === 'mobile' ? MOBILE_CONFIG : DESKTOP_CONFIG
+    const cfg = variant === 'mobile' ? MOBILE_CONFIG : variant === 'screen' ? SCREEN_CONFIG : DESKTOP_CONFIG
     const sequence = SHARED.sequenceCustom.split('-').map(s => Math.max(1, parseInt(s) || 1))
     const seqLen = sequence.length
 
