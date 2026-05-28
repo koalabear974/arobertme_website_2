@@ -9,7 +9,7 @@ export function MobileCircle() {
   useEffect(() => {
     setSize(Math.min(window.innerWidth, 420))
     const onResize = () => setSize(Math.min(window.innerWidth, 420))
-    const onScroll = () => setVisible(window.scrollY > window.innerHeight * 0.8)
+    const onScroll = () => setVisible(window.scrollY > window.innerHeight * 0.3)
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', onResize, { passive: true })
     return () => {
